@@ -5,7 +5,7 @@ export async function createDiary(username, content) {
   if (!username || !content) throw new Error("username 또는 content 누락");
   const analyzeUrl = process.env.ANALYZE_URL;
   if (!analyzeUrl) throw new Error("ANALYZE_URL 환경변수가 설정되지 않았습니다");
-  const { data } = await axios.post(analyzeUrl, { text: content });
+  const { data } = await axios.post(`${analyzeUrl}/analyze`, { text: content });
   const { emotion, score, top_emotions } = data;
   await Diary.create({
     username,
@@ -41,6 +41,6 @@ export async function deleteDiaryById(id, username) {
 export async function analyzeEmotion(content) {
   const analyzeUrl = process.env.ANALYZE_URL;
   if (!analyzeUrl) throw new Error("ANALYZE_URL 환경변수가 설정되지 않았습니다");
-  const { data } = await axios.post(analyzeUrl, { text: content });
+  const { data } = await axios.post(`${analyzeUrl}/analyze`, { text: content });
   return data;
 }
