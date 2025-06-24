@@ -2,7 +2,7 @@ import axios from "axios";
 import "../pages/AuthPage.css";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://diary-backend-a496.onrender.com",
 });
 
 apiClient.interceptors.request.use((config) => {
