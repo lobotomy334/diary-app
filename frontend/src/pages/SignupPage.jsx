@@ -21,7 +21,7 @@ export default function SignupPage() {
       return;
     }
     try {
-      const res = await fetch("http://localhost:3000/auth/signup", {
+      const res = await fetch("https://diary-backend-a496.onrender.com/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -29,8 +29,8 @@ export default function SignupPage() {
           password,
           name: "홍길동",
           birth: "1990-01-01"
-        })
-      });
+  })
+});
       const data = await res.json();
       if (data.success && data.token) {
         login(data.token, username);
