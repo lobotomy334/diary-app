@@ -15,7 +15,10 @@ const app = express();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(cors({
-  origin : "https://diary-app-git-main-lobotomys-projects.vercel.app",
+  origin : [
+    "https://diary-app-seven-sable.vercel.app",
+    "https://diary-app-git-main-lobotomys-projects.vercel.app",
+  ],
   credentials: true,
 }));
 app.use(express.json());  // body-parser 대신 사용 가능
