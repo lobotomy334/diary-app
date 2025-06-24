@@ -1,6 +1,8 @@
 // 📁 frontend/services/diaryService.js (id→_id 사용)
 import apiClient from "../utils/apiClient";
 
+const BACKEND_URL = "https://diary-backend-a496.onrender.com";
+
 export async function fetchDiaries() {
   try {
     const res = await apiClient.get("/diaries");
@@ -32,7 +34,7 @@ export async function deleteDiary(_id) {
 export const analyzeDiaryEmotion = async (content) => {
   const token = localStorage.getItem("token");
 
-  const res = await fetch("http://localhost:3000/diaries/analyze", {
+  const res = await fetch('${BACKEND_URL}/diaries/analyze', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
