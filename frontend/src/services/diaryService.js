@@ -34,7 +34,7 @@ export async function deleteDiary(_id) {
 export const analyzeDiaryEmotion = async (content) => {
   const token = localStorage.getItem("token");
 
-  const res = await fetch('${BACKEND_URL}/diaries/analyze', {
+  const res = await fetch(`${BACKEND_URL}/diaries/analyze`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
