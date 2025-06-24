@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const analysisApi = axios.create({
-  baseURL: "http://localhost:5000"
+  baseURL: "https://diary-backend-a496.onrender.com"
 });
 
 export async function analyzeEmotion(content) {
