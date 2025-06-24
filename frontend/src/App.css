@@ -1,0 +1,70 @@
+/* 📁 src/global.css */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+/* ====== 변수 정의 ====== */
+:root {
+  --bg-main: #fafafa;
+  --bg-card: #ffffff;
+  --text-main: #333;
+  --shadow-card: rgba(0, 0, 0, 0.05);
+  --accent: #009688;
+  --accent-light: #d0f0eb;
+
+  --emotion-positive: #ffeaa7;
+  --emotion-neutral: #dfe6e9;
+  --emotion-negative: #fab1a0;
+}
+
+/* ====== 기본 HTML 스타일 ====== */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard Variable', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  /* ⚠️ 기존 템플릿의 flex 정렬 무효화 */
+  display: block !important;
+  place-items: unset !important;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* ====== 기본 버튼 리셋 ====== */
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* ====== 기본 폼 요소 정리 ====== */
+select, input {
+  font-family: inherit;
+  outline: none;
+}
+
+/* ====== 반응형 텍스트 정렬 유틸 ====== */
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+/* ====== 재사용 가능한 색상 배경 ====== */
+.bg-accent {
+  background-color: var(--accent);
+  color: white;
+}
+.bg-card {
+  background-color: var(--bg-card);
+}

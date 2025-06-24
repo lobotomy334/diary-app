@@ -1,0 +1,154 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+:root {
+  --text-main: #333;
+  --bg-main: #fafafa;
+  --bg-card: #ffffff;
+  --shadow-card: rgba(0, 0, 0, 0.05);
+  --accent: #009688;
+  --accent-light: #d0f0eb;
+
+  --emotion-positive: #ffeaa7;
+  --emotion-neutral: #dfe6e9;
+  --emotion-negative: #fab1a0;
+}
+
+body {
+  font-family: 'Pretendard Variable', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* 전체 페이지 레이아웃 */
+.stats-page-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.stats-wrapper {
+  max-width: 960px;
+  width: 100%;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 상단: 제목 + 내일기 버튼 */
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* 강조된 내일기 버튼 */
+.highlighted-diary-button {
+  background-color: var(--accent);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.7rem 1.6rem;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 150, 136, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+.highlighted-diary-button:hover {
+  background-color: #00796b;
+  transform: translateY(-2px);
+}
+
+/* 차트 가로 정렬 */
+.chart-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 각 차트 카드 */
+.chart-card {
+  width: 320px;
+  max-width: 100%;
+  background-color: var(--bg-card);
+  box-shadow: 0 2px 10px var(--shadow-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+/* 주간/월간 버튼 네비게이션 */
+.chart-nav {
+  text-align: center;
+  margin: 2rem 0 1.5rem;
+}
+
+.chart-nav button {
+  margin: 0 0.5rem;
+  padding: 0.6rem 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid var(--accent);
+  background-color: white;
+  color: var(--accent);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.chart-nav .btn-primary {
+  background-color: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.chart-nav .btn-outline-primary:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+/* 로딩 / 빈 데이터 상태 */
+.stats-loading,
+.stats-empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 3rem 0;
+}
+
+/* 반응형 대응 (선택사항) */
+@media (max-width: 600px) {
+  .stats-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .highlighted-diary-button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .chart-card {
+    width: 100%;
+  }
+}

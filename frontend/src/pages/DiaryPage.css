@@ -1,0 +1,216 @@
+/* 📁 frontend/pages/DiaryPage.css */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+:root {
+  --bg-main: #fdf6f0;
+  --text-main: #3d2c2e;
+  --accent: #ffd9b7;
+  --highlight: #ffeaa7;
+  --emotion-positive: #ffeaa7;
+  --emotion-neutral: #dfe6e9;
+  --emotion-negative: #fab1a0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard Variable', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.diary-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: var(--bg-main);
+}
+
+.diary-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2.5rem 1.5rem;
+  background-color: #fff;
+  border-right: 1px solid #eee;
+  position: relative;
+}
+
+.sidebar h5 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar a.btn {
+  font-size: 1rem;
+  padding: 0.7rem 1.2rem;
+  display: block;
+  text-align: center;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.diary-list {
+  flex-grow: 1;
+  margin-top: 0.5rem;
+  max-height: calc(100vh - 360px);
+  overflow-y: auto;
+  padding-right: 6px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.diary-list::-webkit-scrollbar {
+  width: 6px;
+}
+.diary-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+.diary-item {
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  background-color: #fefefe;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.diary-item:hover {
+  background-color: var(--highlight);
+  transform: scale(1.02);
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #333;
+}
+.badge.bg-기쁨 { background-color: #ffeaa7; }
+.badge.bg-슬픔 { background-color: #a29bfe; }
+.badge.bg-불안 { background-color: #fab1a0; }
+.badge.bg-분노 { background-color: #ff7675; }
+.badge.bg-당황 { background-color: #fdcb6e; }
+.badge.bg-상처 { background-color: #dfe6e9; }
+
+/* 사이드바 버튼 공통 스타일 */
+.sidebar .btn {
+  width: 100%;
+  font-weight: 600;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  margin-top: 0.4rem;
+  border-radius: 12px;
+}
+
+/* 감정 통계/로그아웃 하단 고정 정렬용 */
+.sidebar-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.8rem;
+  gap: 0.5rem;
+  border-top: 1px solid #ddd;
+  padding-top: 0.8rem;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+  padding: 2.5rem;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.diary-write,
+.diary-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+textarea.form-control {
+  width: 70%;
+  margin: 0 auto;
+  display: block;
+  min-height: 400px;
+  max-height: 600px;
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  line-height: 32px;
+  border-radius: 12px;
+  border: none;
+  resize: vertical;
+  background-image: linear-gradient(to bottom, #eee 1px, transparent 1px);
+  background-size: 100% 32px;
+  overflow-y: auto;
+}
+
+.emotion-result {
+  margin-top: 2rem;
+  padding: 1rem 1.2rem;
+  border-left: 6px solid var(--accent);
+  background-color: #f9f0e9;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.emotion-chart-container {
+  max-width: 600px;
+  height: 300px;
+  margin: 2rem auto 0 auto;
+}
+
+.btn {
+  border-radius: 10px !important;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.04);
+  opacity: 0.92;
+}
+
+.btn-float-save {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  background-color: #2ecc71;
+  color: white;
+  padding: 0.9rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: 0.2s ease;
+}
+
+.btn-float-save:hover {
+  background-color: #27ae60;
+  transform: scale(1.05);
+}
