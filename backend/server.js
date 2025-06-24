@@ -22,10 +22,10 @@ app.use("/diaries", diaryRoutes);
 
 
 // 정적 파일 서빙
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-});
+//app.use(express.static(path.join(__dirname, "../frontend/dist")));
+//app.get("/*", (req, res) => {
+//  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+//});
 
 app.listen(3000, () => {
   console.log("✅ 서버 실행 중: http://localhost:3000");
