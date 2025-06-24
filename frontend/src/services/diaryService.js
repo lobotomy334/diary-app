@@ -1,7 +1,4 @@
-// 📁 frontend/services/diaryService.js (id→_id 사용)
 import apiClient from "../utils/apiClient";
-
-const BACKEND_URL = "https://diary-backend-a496.onrender.com";
 
 export async function fetchDiaries() {
   try {
@@ -34,21 +31,26 @@ export async function deleteDiary(_id) {
 export const analyzeDiaryEmotion = async (content) => {
   const token = localStorage.getItem("token");
 
-  const res = await fetch(`${BACKEND_URL}/diaries/analyze`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify({ content })
-  });
+  try {
+    const res = await apiClient.post(
+      "/diaries/analyze",
+      { content },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-  const data = await res.json();
-  if (!data.success) throw new Error("감정 분석 실패");
+    if (!res.data.success) throw new Error("감정 분석 실패");
 
-  return {
-    emotion: data.emotion,
-    score: data.score,
-    top_emotions: data.top_emotions
-  };
+    return {
+      emotion: res.data.emotion,
+      score: res.data.score,
+      top_emotions: res.data.top_emotions,
+    };
+  } catch (error) {
+    console.error("감정 분석 에러:", error);
+    throw error;
+  }
 };
