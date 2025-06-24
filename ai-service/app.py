@@ -1,4 +1,3 @@
-
 from flask import Flask, request, jsonify
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
@@ -17,7 +16,6 @@ except Exception as e:
     tokenizer = None
     model = None
 
-# 60개 감정 → 5개 상위 감정으로 매핑
 label_map = {
     "분노 😡": ["짜증", "분노", "억울함", "질투", "화남"],
     "두려움 😨": ["불안", "당황", "긴장", "초조", "무서움"],
@@ -45,9 +43,8 @@ def analyze():
         logits = outputs.logits[0]
         probs = F.softmax(logits, dim=0)
 
-        # load 60개 라벨
         raw_labels = model.config.id2label
-        group_scores = { group: 0.0 for group in label_map }
+        group_scores = {group: 0.0 for group in label_map}
 
         for idx, score in enumerate(probs):
             label_text = raw_labels[idx].lower()
@@ -73,11 +70,11 @@ def analyze():
         print("❌ 감정 분석 중 오류:", e)
         return jsonify({"error": "감정 분석 중 오류가 발생했습니다."}), 500
 
-
+@app.route('/')
+def home():
+    return "Emotion Analyze API is running."
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Render가 지정하는 포트 사용
-    app.run(host="0.0.0.0", port=port)
-
-
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 
